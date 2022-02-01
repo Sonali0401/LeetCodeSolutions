@@ -1,0 +1,19 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int bigRight = prices[0];
+        int smallLeft = prices[0];
+        int maxDiff = 0;
+        for(int i = 1; i < prices.length; i++) {
+            if(prices[i] < smallLeft) {
+                smallLeft = prices[i];
+                bigRight = prices[i];
+            }
+            else if(prices[i] > bigRight) {
+                bigRight = prices[i];
+            }
+            if(bigRight - smallLeft > maxDiff)
+                maxDiff = bigRight - smallLeft;
+        }
+        return maxDiff;
+    }
+}
